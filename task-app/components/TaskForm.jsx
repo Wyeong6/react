@@ -1,14 +1,35 @@
 import React from 'react';
 import './TaskForm.css';
 import Tag from './Tag';
+import { useState } from 'react';
 
-export default function TaskForm() {
+export default function TaskForm({setTasks}) {
 
     const [taskData, setTaskData] = useState({
 		task: '',
 		status: 'todo',
-	})
+		tags: [],
+	});
     
+	const selectTag = (tag) => {
+		if (taskData.tags.some((item) => item === tag)) {
+			const filterTags = taskData.tags.filter((item) => item !== tag);
+			setTaskData((prev) => {
+				return { ...prev, tags: filterTags };
+			});
+		} else {
+			setTaskData((prev) => {
+				return { ...prev, tags: [...prev.tags, tag] };
+			});
+		}
+	};
+
+
+	const checkTag = (tag) => {
+		return taskData.tags.some((item) => item === tag);
+	};
+
+
     const handleChange = (e) => {
 		const { name, value } = e.target;
 		setTaskData((prev) => {
@@ -19,6 +40,14 @@ export default function TaskForm() {
     const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(taskData);
+		setTasks((prev) => {
+			return [...prev, taskData]; //새 task 추가
+		});
+		setTaskData({
+			task: '',
+			status: 'todo',
+			tags: [],
+		  });
 	}
     
 	return (
@@ -28,10 +57,10 @@ export default function TaskForm() {
 
 				<div className='task_form_bottom_line'>
 					<div>
-						<Tag tagName='HTML'/>
-						<Tag tagName='CSS'/>
-						<Tag tagName='JavaScript'/>
-						<Tag tagName='REACT'/>
+						<Tag tagName='HTML' selectTag={selectTag} selected={checkTag('HTML')}/>
+						<Tag tagName='CSS'  selectTag={selectTag} selected={checkTag('CSS')}/>
+						<Tag tagName='JavaScript'  selectTag={selectTag} selected={checkTag('JavaScript')}/>
+						<Tag tagName='REACT'  selectTag={selectTag} selected={checkTag('REACT')}/>
 					</div>
 					<div>
 						<select className='task_status' name='status' value={taskData.status} onChange={handleChange}>
