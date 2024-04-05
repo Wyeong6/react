@@ -5,6 +5,7 @@
 	border-radius: 10px;
 	padding: 10px;
 	margin: 15px 0;
+	
 }
 
 .task_text {
@@ -37,3 +38,4 @@
 .task_delete:hover .delete_icon {
 	opacity: 80%;
 }
+
