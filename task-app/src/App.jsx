@@ -4,14 +4,29 @@ import TaskColumn from '../components/TaskColumn';
 import todoIcon from './assets/direct-hit.png';
 import doingIcon from './assets/glowing-star.png';
 import doneIcon from './assets/check-mark-button.png';
+<<<<<<< HEAD
 import { useState,useEffect,useContext } from 'react';
 import { createContext } from 'react';
+=======
+import { useState,useEffect } from 'react';
+>>>>>>> 49fcb0de0452b105d95b4c7ab869834a63f6c37e
 
 
 const saveTasks = localStorage.getItem('tasks');
 
 
 export default function App() {
+	
+
+<<<<<<< HEAD
+	const handleDelete = (taskIndex) => {
+		const newTasks = tasks.filter((task, index) => index !== taskIndex);
+		setTasks(newTasks);
+	};
+
+	const[tasks,setTasks] = useState(JSON.parse(saveTasks) || []);
+
+=======
 	
 
 	const handleDelete = (taskIndex) => {
@@ -21,6 +36,7 @@ export default function App() {
 
 	const[tasks,setTasks] = useState(JSON.parse(saveTasks) || []);
 
+>>>>>>> 49fcb0de0452b105d95b4c7ab869834a63f6c37e
 	useEffect(() => {
 		localStorage.setItem('tasks', JSON.stringify(tasks));
 	}, [tasks]);

@@ -1,11 +1,17 @@
 import React from 'react';
 import './TaskForm.css';
 import Tag from './Tag';
+<<<<<<< HEAD
 import { useState,useContext } from 'react';
 
 
 export default function TaskForm({setTasks}) {
 
+=======
+import { useState } from 'react';
+
+export default function TaskForm({setTasks}) {
+>>>>>>> 49fcb0de0452b105d95b4c7ab869834a63f6c37e
 
     const [taskData, setTaskData] = useState({
 		task: '',

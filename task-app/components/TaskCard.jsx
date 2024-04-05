@@ -35,6 +35,10 @@ export default function TaskCard({title,tags,handleDelete, index}) {
 		  });
 	}
 
+<<<<<<< HEAD
+=======
+export default function TaskCard({title,tags,handleDelete, index}) {
+>>>>>>> 49fcb0de0452b105d95b4c7ab869834a63f6c37e
 	return (
 		<article className='task_card'>
 			<p className='task_text'>{title}</p>
@@ -58,6 +62,7 @@ export default function TaskCard({title,tags,handleDelete, index}) {
 					</button>
 				</form>
 			</div>
+			
 		</article>
 	);
 }
